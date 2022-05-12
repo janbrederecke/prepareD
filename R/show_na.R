@@ -1,13 +1,15 @@
 #' @export
 
 show_na <- function(d, caption = "", print = TRUE) {
-  var <- vector()
-  missings <- vector()
-  missings_prop <- vector()
-  empty_but_not_NA <- vector()
+  
+  # Make all necessary vectors beforehand
+  var <- character()
+  missings <- missings_prop <- empty_but_not_NA <- numeric()
   
   for (i in 1:length(names(d))) {
+    
     if (sum(is.na(d[[i]])) > 0) {
+      
       var[length(var) + 1] <- names(d)[i]
       missings[length(missings) + 1] <- sum(is.na(d[[i]]))
       missings_prop[length(missings_prop) + 1] <-
@@ -17,6 +19,7 @@ show_na <- function(d, caption = "", print = TRUE) {
     }
   }
   
+  # Make data.frame with all the info
   data <- data.frame(
     var = var,
     missings = missings,
@@ -25,6 +28,7 @@ show_na <- function(d, caption = "", print = TRUE) {
   ) %>%
     arrange(desc(missings))
   
+  # Make a matrix with correct colnames
   data <- as.matrix(data)
   colnames(data) <-
     c("Variable",
@@ -32,7 +36,10 @@ show_na <- function(d, caption = "", print = TRUE) {
       "% missing",
       "N empty but not NA")
   
+  # Make an HTML output if wanted
   if (print == TRUE) {
+    
+    ## Make pretty knitr output
     options(knitr.kable.NA = '')
     print(kableExtra::kable_styling(
       kable_input = knitr::kable(
@@ -45,6 +52,8 @@ show_na <- function(d, caption = "", print = TRUE) {
       full_width = TRUE,
       bootstrap_options = c("striped", "hover", "condensed", "responsive")
     ))
+    
+  # Standard output if wanted  
   } else {
     data
   }

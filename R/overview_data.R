@@ -49,9 +49,10 @@ overview_data <- function(d, caption = "", print = TRUE, percent_missing = 30) {
     rownames(data) <- c(as.character(deparse(substitute(d))))
   }
   
+  # Make an HTML output if wanted
   if (print == TRUE) {
     
-    # Make a HTML output
+    ## Make pretty knitr output
     options(knitr.kable.NA = '')
     print(kableExtra::kable_styling(
       kable_input = knitr::kable(
@@ -66,7 +67,7 @@ overview_data <- function(d, caption = "", print = TRUE, percent_missing = 30) {
       bootstrap_options = c("striped", "hover", "condensed", "responsive")
     ))
     
-    # Standard output
+  # Standard output if wanted
   } else {
     data
   }  

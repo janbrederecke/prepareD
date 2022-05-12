@@ -1,31 +1,40 @@
 #' @export
 
-make_dummies <- function(to_make_dummies, data) {
+make_dummies <- function(d, to_make_dummies) {
   
+  # Check if all cat_predictors are in data
+  if (sum(to_make_dummies %in% names(d)) < length(to_make_dummies)) {
+    stop("Some variables are not in data!")
+  }
+  
+  # Get dummy levels per variable
   for (i in seq_along(to_make_dummies)) {
-    dummy_name <- which(names(data) %in% to_make_dummies[i])
     
-    if (class(data[[dummy_name]]) == "character") {
-      dummy_levels <- unique(na.omit(data[[dummy_name]]))
+    # Find out which number of names(d) corresponds to the variable
+    dummy_name <- which(names(d) %in% to_make_dummies[i])
+    
+    # Check variable type and define dummy_levels accordingly
+    if (class(d[[dummy_name]]) == "character") {
+      dummy_levels <- unique(na.omit(d[[dummy_name]]))
     }
     
-    if (class(data[[dummy_name]]) == "factor" |
-        class(data[[dummy_name]]) == "numeric" |
-        class(data[[dummy_name]]) == "integer") {
+    if (class(d[[dummy_name]]) == "factor" |
+        class(d[[dummy_name]]) == "numeric" |
+        class(d[[dummy_name]]) == "integer") {
       dummy_levels <- as.numeric(as.character(sort(unique(
-        na.omit(data[[dummy_name]])
+        na.omit(d[[dummy_name]])
       ))))
     }
     
+    # Create actual dummy variables in data
     for (j in seq_along(dummy_levels)) {
       name <- paste0(to_make_dummies[i], dummy_levels[j])
-      data[ncol(data) + 1] <- NA
-      names(data)[ncol(data)] <- paste0(name)
-      data[[name]] <-
-        ifelse(data[[dummy_name]] == dummy_levels[j],
-               1,
-               0)
+      d[ncol(d) + 1] <- NA
+      names(d)[ncol(d)] <- paste0(name)
+      d[[name]] <- ifelse(d[[dummy_name]] == dummy_levels[j], 1, 0)
     }
   }
-  data
+  
+  # Return data with dummy variables
+  d
 }

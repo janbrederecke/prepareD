@@ -3,24 +3,20 @@
 check_data <- function(d, caption = "", print = TRUE) {
   
   # Make all necessary vectors beforehand to improve performance
-  var <- 
-    var_type <- 
-    min <- 
-    max <- character(length = (ncol(d)))
-  missings <- 
-    missings_prop <-
-    empty_but_not_NA <- numeric(length = (ncol(d)))
+  var <- var_type <- min <- max <- character(length = (ncol(d)))
+  missings <- missings_prop <- empty_but_not_NA <- numeric(length = (ncol(d)))
   
-  #
+  # Calculate all the necessary values for the output table
   for (i in seq_along(names(d))) {
+    
+    ## Calculate missings and variable type for each variable
     var[i] <- names(d)[i]
     missings[i] <- sum(is.na(d[[i]]))
-    missings_prop[i] <-
-      round(sum(is.na(d[[i]])) / nrow(d) * 100, 2)
-    empty_but_not_NA[i] <-
-      sum(d[[i]] %in% c("", " "), na.rm = TRUE)
+    missings_prop[i] <- round(sum(is.na(d[[i]])) / nrow(d) * 100, 2)
+    empty_but_not_NA[i] <- sum(d[[i]] %in% c("", " "), na.rm = TRUE)
     var_type[i] <- class(d[[i]])
     
+    ## Get the minimum and maximum for every variable
     if (class(d[[i]]) %in% c("numeric", "integer")) {
       
       min[i] <- as.character(round(min(d[[i]], na.rm = TRUE), 3))
@@ -33,6 +29,7 @@ check_data <- function(d, caption = "", print = TRUE) {
     }
   }
   
+  # Put everything into a data.frame arranged by amount of missingness
   data <- data.frame(
     var = var,
     missings = missings,
@@ -44,6 +41,7 @@ check_data <- function(d, caption = "", print = TRUE) {
   ) %>%
     arrange(desc(missings))
   
+  # Make a matrix from the data.frame and add desired names
   data <- as.matrix(data)
   colnames(data) <-
     c("Variable",
@@ -54,6 +52,7 @@ check_data <- function(d, caption = "", print = TRUE) {
       "Minimum",
       "Maximum")
   
+  # Make knitr output if HTML output is desired
   if (print == TRUE) {
     options(knitr.kable.NA = '')
     print(kableExtra::kable_styling(
@@ -67,6 +66,8 @@ check_data <- function(d, caption = "", print = TRUE) {
       full_width = TRUE,
       bootstrap_options = c("striped", "hover", "condensed", "responsive")
     ))
+  
+  # Return the output matrix if no HTML output is desired    
   } else {
     data
   }
