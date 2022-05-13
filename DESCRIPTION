@@ -1,3 +1,4 @@
+Type: Package
 Package: prepared
 Title: Functions that help to prepare data before analysis
 Version: 0.0.0.9000
@@ -9,10 +10,12 @@ Authors@R: person(given = "Jan",
 Description: This package includes functions that were written to make data
              preparation quicker and easier.
              Functions are optimized for work with tidyverse functions.
+Depends: R (>= 3.6.0)
 Imports: tidyverse, labelled
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Suggests: knitr, kableExtra
+License: GPL-3
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
