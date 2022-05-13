@@ -1,4 +1,21 @@
+#' @title check_data
+#'
+#' @description Provides a table with info on missingness and variable type for
+#' the input dataset
+#'
+#' @param d A data.frame or tibble
+#' @param caption A character vector used as the caption of the output
+#' @param print If print = TRUE, an HTML output is generated, else a matrix is
+#' returned
+#' @param percent_missing A number determining the percentage of
+#' missingness used to count variables with high amount of missing values
+#'
+#' @return Either a HTML output for use in Markdown files or a matrix
+#' @examples -
 #' @export
+#' @importFrom dplyr "%>%" "arrange" "desc"
+#' @importFrom kableExtra "kable_styling"
+#' @importFrom knitr "kable"
 
 check_data <- function(d, caption = "", print = TRUE) {
   
@@ -31,7 +48,7 @@ check_data <- function(d, caption = "", print = TRUE) {
   }
   
   # Put everything into a data.frame arranged by amount of missingness
-  data <- data.frame(
+  output <- data.frame(
     var = var,
     missings = missings,
     missings_prop = missings_prop,
@@ -40,11 +57,11 @@ check_data <- function(d, caption = "", print = TRUE) {
     min = min,
     max = max
   ) %>%
-    arrange(desc(missings))
+    dplyr::arrange(dplyr::desc(missings))
   
   # Make a matrix from the data.frame and add desired names
-  data <- as.matrix(data)
-  colnames(data) <-
+  output <- as.matrix(output)
+  colnames(output) <-
     c("Variable",
       "N missing",
       "% missing",
@@ -58,7 +75,7 @@ check_data <- function(d, caption = "", print = TRUE) {
     options(knitr.kable.NA = '')
     print(kableExtra::kable_styling(
       kable_input = knitr::kable(
-        data,
+        output,
         format = "html",
         digits = 3,
         caption = caption,
@@ -70,6 +87,6 @@ check_data <- function(d, caption = "", print = TRUE) {
   
   # Return the output matrix if no HTML output is desired    
   } else {
-    data
+    output
   }
 }

@@ -4,7 +4,7 @@
 #'
 #' @param d A data.frame or tibble
 #' @param caption A character vector used as the caption of the output
-#' @param print If print = TRUE an HTML output is generated, else a matrix is
+#' @param print If print = TRUE, an HTML output is generated, else a matrix is
 #' returned
 #' @param percent_missing A number determining the percentage of
 #' missingness used to count variables with high amount of missing values
@@ -36,7 +36,7 @@ overview_data <- function(d, caption = "", print = TRUE, percent_missing = 30) {
     sum(apply(d, 1, function(x) sum(is.na(x)) >= percent_of_cols) + 0)
   
   # Make data.frame with all the info
-  data <- data.frame(
+  output <- data.frame(
     cols = cols,
     empty_cols = empty_cols,
     cols_percent_missing = cols_percent_missing,
@@ -46,8 +46,8 @@ overview_data <- function(d, caption = "", print = TRUE, percent_missing = 30) {
   )
   
   # Make a matrix with correct colnames
-  data <- as.matrix(data)
-  colnames(data) <-
+  output <- as.matrix(output)
+  colnames(output) <-
     c(
       "N variables",
       "N empty variables",
@@ -59,9 +59,9 @@ overview_data <- function(d, caption = "", print = TRUE, percent_missing = 30) {
   
   # Necessary to use pipe in fron of the function and print correct data name
   if (as.character(deparse(substitute(d))) == ".") {
-    rownames(data) <- c("Input dataset")
+    rownames(output) <- c("Input dataset")
   } else {
-    rownames(data) <- c(as.character(deparse(substitute(d))))
+    rownames(output) <- c(as.character(deparse(substitute(d))))
   }
   
   # Make an HTML output if wanted
@@ -71,7 +71,7 @@ overview_data <- function(d, caption = "", print = TRUE, percent_missing = 30) {
     options(knitr.kable.NA = '')
     print(kableExtra::kable_styling(
       kable_input = knitr::kable(
-        data,
+        output,
         format = "html",
         digits = 3,
         caption = caption,
@@ -84,6 +84,6 @@ overview_data <- function(d, caption = "", print = TRUE, percent_missing = 30) {
     
   # Standard output if wanted
   } else {
-    data
+    output
   }  
 }

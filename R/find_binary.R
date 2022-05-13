@@ -1,11 +1,30 @@
+#' @title find_binary
+#'
+#' @description Returns either a vector with all clearly binary variables or a
+#' list with additional information on variables that might also be binary
+#'
+#' @param d A data.frame or tibble
+#' @param output "bin" returns a vector of binary variables, "list" returns a
+#' list with binary variables, variables coded yes/no and more information
+#' @param include If include = TRUE, variables recoded as 0/1 within the function
+#' are returned in the list-output - requires output = "list"
+#' @param yes Optional character vector that can be used to feed values that
+#' should be used as 'yes'
+#' @param no Optional character vector that can be used to feed values that
+#' should be used as 'no'
+#' @param print_yes_no If print_yes_no = TRUE, values detected as yes/no are
+#' printed
+#' 
+#' @return Either a character vector with clearly binary variables or a list
+#' with additional information
+#' @examples -
 #' @export
+#' @importFrom dplyr "%>%" "if_else" "select" "all_of" 
+#' @importFrom labelled "remove_attributes"
+#' @importFrom stringr "str_detect"
 
 find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
                         no = NULL, print_yes_no = TRUE) {
-  
-  # Load required packages
-  library(dplyr)
-  library(labelled)
   
   # Stop if output is not defined correctly
   if (!(output %in% c("bin", "list"))) {
@@ -90,7 +109,7 @@ find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
     suspected_ynvar_2 <- names(yn_unique_val[yn_unique_val == 2])
     
     ## Get the exact unique values of character variables with 1 unique
-    yn1_test <- lapply(select(d_aux, all_of(suspected_ynvar_1)), function(x)
+    yn1_test <- lapply(dplyr::select(d_aux, all_of(suspected_ynvar_1)), function(x)
     {
       labelled::remove_attributes(na.omit(unique(x)), c("na.action"))
     })
@@ -99,7 +118,7 @@ find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
     yn_var <- names(yn1_test[yn1_test %in% c("yes", "no")])
     
     ## Get the exact unique values of character variables with 2 uniques
-    yn2_test <- lapply(select(d_aux, all_of(suspected_ynvar_2)), function(x)
+    yn2_test <- lapply(dplyr::select(d_aux, dplyr::all_of(suspected_ynvar_2)), function(x)
     {
       labelled::remove_attributes(na.omit(sort(unique(x))), c("na.action"))
     })
@@ -148,7 +167,8 @@ find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
     } else {
       
       # Binarize y/n data
-      d_aux <- d_aux %>% dplyr::select(all_of(sort(yn_var))) %>% as.data.frame()
+      d_aux <- d_aux %>% dplyr::select(dplyr::all_of(sort(yn_var))) %>% 
+        as.data.frame()
       d_aux <-
         as.data.frame(lapply(d_aux, function(x) {
           dplyr::if_else(
@@ -183,7 +203,8 @@ find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
     
     # Report suspected variables 
     if (length(suspected_var) > 0) {
-      print(paste0("These variables might be binary but are not coded using 0 & 1: ",
+      print(paste0(
+        "These variables might be binary but are not coded using 0 & 1: ",
                    suspected_var))
     }
     

@@ -1,4 +1,18 @@
+#' @title show_na
+#'
+#' @description Provides an overview on missing values for the input dataset
+#'
+#' @param d A data.frame or tibble
+#' @param caption A character vector used as the caption of the output
+#' @param print If print = TRUE, an HTML output is generated, else a matrix is
+#' returned
+#' 
+#' @return Either a HTML output for use in Markdown files or a matrix
+#' @examples -
 #' @export
+#' @importFrom dplyr "%>%" "arrange" "desc"
+#' @importFrom kableExtra "kable_styling"
+#' @importFrom knitr "kable"
 
 show_na <- function(d, caption = "", print = TRUE) {
   
@@ -20,17 +34,17 @@ show_na <- function(d, caption = "", print = TRUE) {
   }
   
   # Make data.frame with all the info
-  data <- data.frame(
+  output <- data.frame(
     var = var,
     missings = missings,
     missings_prop = missings_prop,
     empty_but_not_NA = empty_but_not_NA
   ) %>%
-    arrange(desc(missings))
+    dplyr::arrange(dplyr::desc(missings))
   
   # Make a matrix with correct colnames
-  data <- as.matrix(data)
-  colnames(data) <-
+  output <- as.matrix(output)
+  colnames(output) <-
     c("Variable",
       "N missing",
       "% missing",
@@ -43,7 +57,7 @@ show_na <- function(d, caption = "", print = TRUE) {
     options(knitr.kable.NA = '')
     print(kableExtra::kable_styling(
       kable_input = knitr::kable(
-        data,
+        output,
         format = "html",
         digits = 3,
         caption = caption,
@@ -55,6 +69,6 @@ show_na <- function(d, caption = "", print = TRUE) {
     
   # Standard output if wanted  
   } else {
-    data
+    output
   }
 }
