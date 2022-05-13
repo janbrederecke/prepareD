@@ -1,4 +1,19 @@
+#' @title overview_data
+#'
+#' @description Provides an overview table for the input dataset
+#'
+#' @param d A data.frame or tibble
+#' @param caption A character vector used as the caption of the output
+#' @param print If print = TRUE an HTML output is generated, else a matrix is
+#' returned
+#' @param percent_missing A number determining the percentage of
+#' missingness used to count variables with high amount of missing values
+#'
+#' @return Either a HTML output for use in Markdown files or a matrix
+#' @examples -
 #' @export
+#' @importFrom kableExtra "kable_styling"
+#' @importFrom knitr "kable"
 
 overview_data <- function(d, caption = "", print = TRUE, percent_missing = 30) {
   
