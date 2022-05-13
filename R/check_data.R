@@ -5,6 +5,7 @@ check_data <- function(d, caption = "", print = TRUE) {
   # Make all necessary vectors beforehand to improve performance
   var <- var_type <- min <- max <- character(length = (ncol(d)))
   missings <- missings_prop <- empty_but_not_NA <- numeric(length = (ncol(d)))
+  nrow_d <- nrow(d)
   
   # Calculate all the necessary values for the output table
   for (i in seq_along(names(d))) {
@@ -12,7 +13,7 @@ check_data <- function(d, caption = "", print = TRUE) {
     ## Calculate missings and variable type for each variable
     var[i] <- names(d)[i]
     missings[i] <- sum(is.na(d[[i]]))
-    missings_prop[i] <- round(sum(is.na(d[[i]])) / nrow(d) * 100, 2)
+    missings_prop[i] <- round(sum(is.na(d[[i]])) / nrow_d * 100, 2)
     empty_but_not_NA[i] <- sum(d[[i]] %in% c("", " "), na.rm = TRUE)
     var_type[i] <- class(d[[i]])
     
