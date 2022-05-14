@@ -57,7 +57,7 @@ check_data <- function(.data
                      , max)
                    , nrow = length(names(.data))
                    , ncol = 7
-                   , dimnames = list(c(names(.data))
+                   , dimnames = list(c(1:length(names(.data)))
                                      , c("Variable"
                                          , "N missing"
                                          , "% missing"
