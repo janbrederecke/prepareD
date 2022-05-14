@@ -17,6 +17,7 @@ d <- data.frame(
   na1 = c(rep(NA, 12))
 )
 
+library(dplyr)
 # Decide on the size of the data to be able to check speed of functions
 for (i in 1:10) d <- rbind(d, d)
 rm(i)

@@ -3,16 +3,16 @@
 #' @description Returns either a vector with all clearly binary variables or a
 #' list with additional information on variables that might also be binary
 #'
-#' @param d A data.frame or tibble
-#' @param output "bin" returns a vector of binary variables, "list" returns a
+#' @param .data A data.frame or tibble
+#' @param .output "bin" returns a vector of binary variables, "list" returns a
 #' list with binary variables, variables coded yes/no and more information
-#' @param include If include = TRUE, variables recoded as 0/1 within the function
-#' are returned in the list-output - requires output = "list"
-#' @param yes Optional character vector that can be used to feed values that
+#' @param .include If .include = TRUE, variables recoded as 0/1 within the function
+#' are returned in the list-output - requires .output = "list"
+#' @param .yes Optional character vector that can be used to feed values that
 #' should be used as 'yes'
-#' @param no Optional character vector that can be used to feed values that
+#' @param .no Optional character vector that can be used to feed values that
 #' should be used as 'no'
-#' @param print_yes_no If print_yes_no = TRUE, values detected as yes/no are
+#' @param .print_yes_no If .print_yes_no = TRUE, values detected as yes/no are
 #' printed
 #' 
 #' @return Either a character vector with clearly binary variables or a list
@@ -23,43 +23,48 @@
 #' @importFrom labelled "remove_attributes"
 #' @importFrom stringr "str_detect"
 
-find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
-                        no = NULL, print_yes_no = TRUE) {
+find_binary <- function(.data
+                        , .output = "bin"
+                        , .include = FALSE
+                        , .yes = NULL
+                        , .no = NULL
+                        , .print_yes_no = TRUE
+){
   
   # Stop if output is not defined correctly
-  if (!(output %in% c("bin", "list"))) {
-    stop("For 'output' only 'bin' and 'list' allowed.")
+  if (!(.output %in% c("bin", "list"))) {
+    stop("For '.output' only 'bin' and 'list' allowed.")
   }
   
   # Check for external yes and no vectors
   ## Check for yes_vector
-  if (is.null(yes)) {
-    yes <- c("y", "yes", "j", "ja", "jo", "1", "1-ja", "cad")
+  if (is.null(.yes)) {
+    .yes <- c("y", "yes", "j", "ja", "jo", "1", "1-ja", "cad")
   }
   
   ## Print which values were counted as yes
-  if (print_yes_no == TRUE) {
+  if (.print_yes_no == TRUE) {
     print(paste0("These values were coded as 'yes': ", 
-                 paste(yes, collapse = ", ")))
+                 paste(.yes, collapse = ", ")))
   }
   
   ## Check for no_vector
-  if (is.null(no)) {
-    no <- c("no", "n", "nein", "ne", "0", "0-nein", "no-cad")
+  if (is.null(.no)) {
+    .no <- c("no", "n", "nein", "ne", "0", "0-nein", "no-cad")
   }
   
   ## Print which values were counted as no
-  if (print_yes_no == TRUE) {
+  if (.print_yes_no == TRUE) {
     print(paste0("These values were coded as 'no': ",
-                 paste(no, collapse = ", ")))
+                 paste(.no, collapse = ", ")))
   }
   
   # Get all numeric variables
-  numeric_variables <- names(d[, unlist(lapply(d, is.numeric))])
+  numeric_variables <- names(.data[, unlist(lapply(.data, is.numeric))])
   
   # Calculate minimum and maximum for all numeric variables
-  mins <- apply(d[numeric_variables], 2, min, na.rm = TRUE)
-  maxs <- apply(d[numeric_variables], 2, max, na.rm = TRUE)
+  mins <- apply(.data[numeric_variables], 2, min, na.rm = TRUE)
+  maxs <- apply(.data[numeric_variables], 2, max, na.rm = TRUE)
   
   # Get all numeric variables that only have 0s and 1s
   bin_var <- sort(numeric_variables[(mins == 0 & maxs == 1) |
@@ -70,11 +75,11 @@ find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
   to_test <- numeric_variables[!numeric_variables %in% bin_var]
   
   # Add character variables
-  character_variables <- names(d[, unlist(lapply(d, is.character))])
+  character_variables <- names(.data[, unlist(lapply(.data, is.character))])
   to_test <- c(to_test, character_variables)
   
   # Make auxilliary dataset containing only variables of interest
-  d_aux <- d[, to_test]
+  d_aux <- .data[, to_test]
   
   # Make all the character variables lowercase
   d_aux[, character_variables] <- lapply(d_aux[, character_variables], tolower)
@@ -83,10 +88,10 @@ find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
   d_aux[, character_variables] <-
     lapply(d_aux[, character_variables], function(x) {
       dplyr::if_else(
-        condition = x %in% yes,
+        condition = x %in% .yes,
         true = "yes",
         false = dplyr::if_else(
-          condition = x %in% no,
+          condition = x %in% .no,
           true = "no",
           false = x
         )
@@ -95,7 +100,7 @@ find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
   
   # Define the two output variants
   # List output:
-  if (output == "list") {
+  if (.output == "list") {
     
     # Find "clear" yes/no binary variables
     ## Get number of unique values in character variables
@@ -142,26 +147,26 @@ find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
     suspected_var <- names(to_test[to_test <= 2])
     
     # Add unique values for all variables of interesst
-    unique_values <- lapply(d[, sort(c(bin_var, yn_var, suspected_var))],
+    unique_values <- lapply(.data[, sort(c(bin_var, yn_var, suspected_var))],
                             function(x) {
                               labelled::remove_attributes(sort(na.omit(unique(x))),
                                                           c("na.action"))
                             })
     
     # Create output list
-    out <- list(
+    output <- list(
       "bin_var" = sort(bin_var),
       "yn_var" = sort(yn_var),
       "suspected_var" = sort(suspected_var),
       "unique_values" = unique_values,
-      "yes_values" = yes,
-      "no_values" = no
+      "yes_values" = .yes,
+      "no_values" = .no
     )
     
     # Return output
-    if (include != TRUE) {
+    if (.include != TRUE) {
       
-      out
+      output
       
       # Return output with binarized y/n data    
     } else {
@@ -183,14 +188,14 @@ find_binary <- function(d, output = "bin", include = FALSE, yes = NULL,
         }))
       
       # Add binarized data to output list
-      out[["binarized_yn_data"]] <- d_aux
+      output[["binarized_yn_data"]] <- d_aux
       
       # Return output
-      out
+      output
     }  
     
     # Standard output:  
-  } else if (output == "bin") {
+  } else if (.output == "bin") {
     
     # Count unique values but NA in variables to be tested
     to_test <- unlist(lapply(d_aux, function(x)
