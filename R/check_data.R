@@ -11,7 +11,6 @@
 #' @return Either a HTML output for use in Markdown files or a matrix
 #' @examples -
 #' @export
-#' @importFrom dplyr "%>%" "arrange" "desc"
 #' @importFrom kableExtra "kable_styling"
 #' @importFrom knitr "kable"
 

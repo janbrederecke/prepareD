@@ -5,30 +5,30 @@
 \title{find_binary}
 \usage{
 find_binary(
-  d,
-  output = "bin",
-  include = FALSE,
-  yes = NULL,
-  no = NULL,
-  print_yes_no = TRUE
+  .data,
+  .output = "bin",
+  .include = FALSE,
+  .yes = NULL,
+  .no = NULL,
+  .print_yes_no = TRUE
 )
 }
 \arguments{
-\item{d}{A data.frame or tibble}
+\item{.data}{A data.frame or tibble}
 
-\item{output}{"bin" returns a vector of binary variables, "list" returns a
+\item{.output}{"bin" returns a vector of binary variables, "list" returns a
 list with binary variables, variables coded yes/no and more information}
 
-\item{include}{If include = TRUE, variables recoded as 0/1 within the function
-are returned in the list-output - requires output = "list"}
+\item{.include}{If .include = TRUE, variables recoded as 0/1 within the function
+are returned in the list-output - requires .output = "list"}
 
-\item{yes}{Optional character vector that can be used to feed values that
+\item{.yes}{Optional character vector that can be used to feed values that
 should be used as 'yes'}
 
-\item{no}{Optional character vector that can be used to feed values that
+\item{.no}{Optional character vector that can be used to feed values that
 should be used as 'no'}
 
-\item{print_yes_no}{If print_yes_no = TRUE, values detected as yes/no are
+\item{.print_yes_no}{If .print_yes_no = TRUE, values detected as yes/no are
 printed}
 }
 \value{

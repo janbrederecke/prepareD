@@ -4,21 +4,22 @@
 \alias{show_na}
 \title{show_na}
 \usage{
-show_na(d, caption = "", print = TRUE)
+show_na(.data, .caption = "", .print = TRUE)
 }
 \arguments{
-\item{d}{A data.frame or tibble}
+\item{.data}{A data.frame or tibble}
 
-\item{caption}{A character vector used as the caption of the output}
+\item{.caption}{A character vector used as the caption of the output}
 
-\item{print}{If print = TRUE, an HTML output is generated, else a matrix is
+\item{.print}{If .print = TRUE, an HTML output is generated, else a matrix is
 returned}
 }
 \value{
 Either a HTML output for use in Markdown files or a matrix
 }
 \description{
-Provides an overview on missing values for the input dataset
+Returns overview on missing values for variables of the input
+dataset containing at least one missing value
 }
 \examples{
 -

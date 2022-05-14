@@ -1,12 +1,22 @@
+#' @title find_continouus
+#'
+#' @description Returns a vector with all numeric variables with three or more
+#' unique values
+#'
+#' @param .data A data.frame or tibble
+#' 
+#' @return A character vector with the numeric variables
+#' @examples -
 #' @export
 
-find_continouus <- function(d) {
+find_continouus <- function(.data
+){
   
   # Get all numeric variables
-  numeric_variables <- names(d[, unlist(lapply(d, is.numeric))])
+  numeric_variables <- names(.data[, unlist(lapply(.data, is.numeric))])
   
   # Count unique values but NA in variables to be tested
-  to_test <- unlist(lapply(d[, numeric_variables], function(x)
+  to_test <- unlist(lapply(.data[, numeric_variables], function(x)
     length(na.omit(unique(
       x
     )))))

@@ -4,17 +4,17 @@
 \alias{overview_data}
 \title{overview_data}
 \usage{
-overview_data(d, caption = "", print = TRUE, percent_missing = 30)
+overview_data(.data, .caption = "", .print = TRUE, .percent_missing = 30)
 }
 \arguments{
-\item{d}{A data.frame or tibble}
+\item{.data}{A data.frame or tibble}
 
-\item{caption}{A character vector used as the caption of the output}
+\item{.caption}{A character vector used as the caption of the output}
 
-\item{print}{If print = TRUE, an HTML output is generated, else a matrix is
+\item{.print}{If .print = TRUE, an HTML output is generated, else a matrix is
 returned}
 
-\item{percent_missing}{A number determining the percentage of
+\item{.percent_missing}{A number determining the percentage of
 missingness used to count variables with high amount of missing values}
 }
 \value{
