@@ -4,10 +4,14 @@
 \alias{find_continouus}
 \title{find_continouus}
 \usage{
-find_continouus(.data)
+find_continouus(.data, .bin_var = NULL)
 }
 \arguments{
 \item{.data}{A data.frame or tibble}
+
+\item{.bin_var}{A character vector containing all binary variables
+(if known). This results in the output of all numeric variables not in this
+string.}
 }
 \value{
 A character vector with the numeric variables
