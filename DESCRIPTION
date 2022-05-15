@@ -1,5 +1,5 @@
 Type: Package
-Package: prepared
+Package: prepareD
 Title: Functions that help to prepare data before analysis
 Version: 0.0.0.9000
 Authors@R: person(given = "Jan",
