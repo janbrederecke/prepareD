@@ -1,5 +1,5 @@
-# prepared
+# prepareD
 
-A package with useful DIY functions for data preparation.
+R package with useful functions for data preparation and documentation.
 
 Author and maintainer: Jan Brederecke
