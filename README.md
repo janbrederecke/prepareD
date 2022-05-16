@@ -4,9 +4,20 @@ R package with useful functions for data preparation and documentation.
 
 ## Included functions
 
-**overview_data**   Provides an overview table for the input dataset.
+**overview_data**:
+* Returns an overview table for the input dataset.
 
-**check_data**      Provides a table with info on missingness and variable type for the input dataset
+**check_data**:
+* Returns a table with info on missingness and variable type for the input dataset
+
+**show_na**:
+* Returns overview on missing values for variables of the input
+
+**find_binary**:
+* Returns either a vector with all clearly binary variables or a list with additional information on variables that might also be binary
+
+**find_continouus** :
+* Returns either a vector with all numeric variables with three or more unique values or all numeric variables not in input vector .bin_var
 
 ## Installation
 
