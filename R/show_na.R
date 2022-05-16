@@ -46,9 +46,9 @@ show_na <- function(.data
                    , ncol = 4
                    , dimnames = list(c(1:length(var))
                                      , c("Variable"
-                                         , "N missing"
+                                         , "Missing"
                                          , "% missing"
-                                         , "N empty but not NA"
+                                         , "Empty but not NA"
                                          )
                    ))
   

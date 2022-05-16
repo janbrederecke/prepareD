@@ -57,14 +57,14 @@ overview_data <- function(.data
                    , ncol = 6
                    , dimnames = list(c(paste0(input_name))
                                      , c(
-      "N variables"
-      , "N empty variables"
-      , paste0("N variables with more than "
+      "Variables"
+      , "Empty variables"
+      , paste0("Variables with more than "
                 , .percent_missing
                 , "% missing values")
-      , "N rows"
-      , "N empty rows"
-      , paste0("N rows with more than "
+      , "Rows"
+      , "Empty rows"
+      , paste0("Rows with more than "
                 , .percent_missing
                 , "% missing values")
             )))

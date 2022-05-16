@@ -59,9 +59,9 @@ check_data <- function(.data
                    , ncol = 7
                    , dimnames = list(c(1:length(names(.data)))
                                      , c("Variable"
-                                         , "N missing"
+                                         , "Missing"
                                          , "% missing"
-                                         , "N empty but not NA"
+                                         , "Empty but not NA"
                                          , "Type"
                                          , "Minimum"
                                          , "Maximum")
