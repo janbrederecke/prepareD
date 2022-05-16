@@ -15,6 +15,7 @@ R package with useful functions for data preparation and documentation.
 
 **find_binary**:
 * Returns either a vector with all clearly binary variables or a list with additional information on variables that might also be binary
+* Can automatically recode variables that are identified as containing values like 'yes' / 'no'
 
 **find_continouus** :
 * Returns either a vector with all numeric variables with three or more unique values or all numeric variables not in input vector .bin_var
