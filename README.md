@@ -5,7 +5,7 @@ R package with useful functions for data preparation and documentation.
 ## Included functions
 
 **overview_data** :
-* Returns an overview table for the input dataset.
+* Returns an overview table for the input dataset
 
 **check_data** :
 * Returns a table with info on missingness and variable type for the input dataset
