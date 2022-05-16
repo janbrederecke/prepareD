@@ -4,7 +4,7 @@ R package with useful functions for data preparation and documentation.
 
 ## Included functions
 
-**overview_data**:
+**overview_data** :
 * Returns an overview table for the input dataset.
 
 **check_data** :
