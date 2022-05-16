@@ -2,31 +2,27 @@
 
 R package with useful functions for data preparation and documentation.
 
-## Included functions
+## Overview
 
-**overview_data** :
-* Returns an overview table for the input dataset
+### data_ family
 
-**check_data** :
-* Returns a table with info on missingness and variable type for the input dataset
+-   `overview_data()` Returns an overview table for the input dataset.
 
-**show_na** :
-* Returns overview on missing values for variables of the input
+-   `check_data()` Returns a table with info on missingness and variable type for the input dataset.
 
-**find_binary** :
-* Returns either a vector with all clearly binary variables or a list with additional information on variables that might also be binary
-* Can automatically recode variables that are identified as containing values like 'yes' / 'no'
+-   `show_na()` Returns overview on missing values for variables of the input.
 
-**find_continouus** :
-* Returns either a vector with all numeric variables with three or more unique values or all numeric variables not in input vector .bin_var
+### find_ family
 
-**annotate_dummies** : 
-* Returns the annotation with additional dummy variables for specified variables
-* Requires a data.frame or matrix object of name 'annotation' in the global environment
-* The annotation object must be specified using the column names "name", "pname", "unit", "short_pname", and "comment"
+-   `find_binary()` Returns all binary variables.
 
-**make_dummies** : 
-* Returns the input data with additional dummy variables for specified variables
+-   `find_continouus()` Returns all numeric variables.
+
+### dummies_ family
+
+-   `annotate_dummies()` Returns the annotation with additional dummy variables.
+
+-   `make_dummies()` Returns the input data with additional dummy variables.
 
 ## Installation
 
@@ -36,4 +32,5 @@ You can get the development version from [GitHub](https://github.com/) with:
 devtools::install_github("janbrederecke/prepareD")
 ```
 
+## Contact
 Please submit feedback and suggestions through Github's issues facility.
