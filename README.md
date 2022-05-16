@@ -36,6 +36,4 @@ You can get the development version from [GitHub](https://github.com/) with:
 devtools::install_github("janbrederecke/prepareD")
 ```
 
-
-
-Author and maintainer: Jan Brederecke
+Please submit feedback and suggestions through Github's issues facility.
