@@ -2,20 +2,20 @@
 
 R package with useful functions for data preparation and documentation.
 
-Author and maintainer: Jan Brederecke
+## Included functions
+
+**overview_data**   Provides an overview table for the input dataset.
+
+**check_data**      Provides a table with info on missingness and variable type for the input dataset
 
 ## Installation
 
-You can not yet install the released version of prepareD from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("prepareD")
-```
-because it will probably only be submitted to CRAN in the fall of 2022.
-
-You can nonetheless get the development version from [GitHub](https://github.com/) with:
+You can get the development version from [GitHub](https://github.com/) with:
 
 ``` r
 devtools::install_github("janbrederecke/prepareD")
 ```
+
+
+
+Author and maintainer: Jan Brederecke
