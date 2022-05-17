@@ -14,8 +14,8 @@ for the input dataset.
 -   `data_missing()` Returns overview on missing values for variables of the
 input.
 
--   `data_ready()` Will return information on why your data appears (not) ready
-for further processing and analysis.
+-   `data_ready()` Will return information on why your data is (not) ready for
+analysis.
 
 ### find_ family
 
