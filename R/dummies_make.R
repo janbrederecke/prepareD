@@ -1,4 +1,4 @@
-#' @title make_dummies
+#' @title dummies_make
 #'
 #' @description Returns the input data with additional dummy variables for
 #' specified variables
@@ -12,7 +12,7 @@
 #' @examples -
 #' @export
 
-make_dummies <- function(.data
+dummies_make <- function(.data
                          , .input_variables
 ){
   

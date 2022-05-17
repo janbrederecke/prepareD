@@ -1,4 +1,4 @@
-#' @title overview_data
+#' @title data_overview
 #'
 #' @description Provides an overview table for the input dataset
 #'
@@ -15,7 +15,7 @@
 #' @importFrom kableExtra "kable_styling"
 #' @importFrom knitr "kable"
 
-overview_data <- function(.data
+data_overview <- function(.data
                  , .caption = ""
                  , .print = TRUE
                  , .percent_missing = 30

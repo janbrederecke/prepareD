@@ -1,4 +1,4 @@
-#' @title check_data
+#' @title data_check
 #'
 #' @description Provides a table with info on missingness and variable type for
 #' the input dataset
@@ -14,7 +14,7 @@
 #' @importFrom kableExtra "kable_styling"
 #' @importFrom knitr "kable"
 
-check_data <- function(.data
+data_check <- function(.data
               , .caption = ""
               , .print = TRUE
 ){

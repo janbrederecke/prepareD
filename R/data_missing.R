@@ -1,4 +1,4 @@
-#' @title show_na
+#' @title data_missing
 #'
 #' @description Returns overview on missing values for variables of the input
 #' dataset containing at least one missing value
@@ -14,7 +14,7 @@
 #' @importFrom kableExtra "kable_styling"
 #' @importFrom knitr "kable"
 
-show_na <- function(.data
+data_missing <- function(.data
                     , .caption = ""
                     , .print = TRUE
 ){

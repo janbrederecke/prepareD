@@ -6,11 +6,11 @@ R package with useful functions for data preparation and documentation.
 
 ### data_ family
 
--   `overview_data()` Returns an overview table for the input dataset.
+-   `data_overview()` Returns an overview table for the input dataset.
 
--   `check_data()` Returns a table with info on missingness and variable type for the input dataset.
+-   `data_check()` Returns a table with info on missingness and variable type for the input dataset.
 
--   `show_na()` Returns overview on missing values for variables of the input.
+-   `data_missing()` Returns overview on missing values for variables of the input.
 
 ### find_ family
 
@@ -20,9 +20,9 @@ R package with useful functions for data preparation and documentation.
 
 ### dummies_ family
 
--   `annotate_dummies()` Returns the annotation with additional dummy variables.
+-   `dummies_annotate()` Returns the annotation with additional dummy variables.
 
--   `make_dummies()` Returns the input data with additional dummy variables.
+-   `dummies_make()` Returns the input data with additional dummy variables.
 
 ## Installation
 

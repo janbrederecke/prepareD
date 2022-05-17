@@ -1,4 +1,4 @@
-#' @title annotate_dummies
+#' @title dummies_annotate
 #'
 #' @description Returns the annotation with additional dummy variables for
 #' specified variables. Requires a data.frame or matrix object of name
@@ -16,7 +16,7 @@
 #' @examples -
 #' @export
 
-annotate_dummies <- function(.data
+dummies_annotate <- function(.data
                              , .input_variables
 ){
   
