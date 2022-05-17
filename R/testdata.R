@@ -1,50 +1,18 @@
-test_data <- function(size = 1
+internal_data <- function(size = 1
 ) {
-  d <<- data.frame(
+  d <- data.frame(
     num1 = c(1, 2, 0, NA, 5, 1, 7, 1, 0, 10, 1, 2),
     num2 = c(2, 2, 2, NA, 2, 2, 2, 2, 2, 3, 2, 2),
     num3 = c(2.22222, 5, NA, 6.789, 10000.009, 34, 6, 7, 3, 5, 6, 66),
     yn1 = c(
-      "yes",
-      "no-cad",
-      "nein",
-      "n",
-      "j",
-      "ja",
-      "0",
-      NA,
-      "1-ja",
-      "0-nein",
-      "no",
+      "yes", "no-cad", "nein", "n", "j", "ja", "0", NA, "1-ja", "0-nein", "no",
       "no"
     ),
     yn2 = c(
-      "yes",
-      "yes",
-      "yes",
-      "yes",
-      "yes",
-      "yes",
-      "yes",
-      NA,
-      "yes",
-      "yes",
-      "yes",
+      "yes", "yes", "yes", "yes", "yes", "yes", "yes", NA, "yes", "yes", "yes",
       "yes"
     ),
-    yn3 = c(
-      "no",
-      "no",
-      "no",
-      "no",
-      "no",
-      "no",
-      "no",
-      NA,
-      "no",
-      "no",
-      "no",
-      "no"
+    yn3 = c("no", "no", "no", "no", "no", "no", "no", NA, "no", "no", "no", "no"
     ),
     bn1 = c(1, 0, 0, 0, 0, 0, 1, NA, NA, 1, 1, 0),
     bn2 = c(0, 0, 0, 0, 0, 0, 0, NA, NA, 0, 0, 0),
@@ -60,12 +28,15 @@ test_data <- function(size = 1
     na1 = c(rep(NA, 12))
   )
   
-  
   # Decide on the size of the data to be able to check speed of functions
   for (i in 1:size)
     d <- rbind(d, d)
   rm(i)
   
+  # Output the dataframe to the environment
+  d <<- d
+  
+  # Make an annotation file
   annotation <<-
     data.frame(
       "name" = c("bn1", "bn2"),
