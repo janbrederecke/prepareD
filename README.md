@@ -29,6 +29,10 @@ analysis.
 
 -   `dummies_make()` Returns the input data with additional dummy variables.
 
+### comment_ family
+
+-   `comment()` Let's you grow a matrix with comments thoughout your analyis.
+
 ### internal_ family
 
 -   `internal_data()` Returns a dataframe and annotation file for testing
