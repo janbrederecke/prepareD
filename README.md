@@ -28,7 +28,7 @@ input.
 
 ### internal_ family
 
--   `internal_data` Returns a dataframe and annotation file for testing
+-   `internal_data()` Returns a dataframe and annotation file for testing
 purposes.
 
 ## Installation
