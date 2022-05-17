@@ -46,5 +46,9 @@ You can get the development version from [GitHub](https://github.com/) with:
 devtools::install_github("janbrederecke/prepareD")
 ```
 
+## Acknowledgement
+
+The logo was designed by [Tim Brederecke](https://www.instagram.com/timbrederecke/). 
+
 ## Contact
 Please submit feedback and suggestions through Github's issues facility.
