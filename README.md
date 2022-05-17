@@ -14,14 +14,14 @@ for the input dataset.
 -   `data_missing()` Returns overview on missing values for variables of the
 input.
 
--   `data_ready()` Will return information on why your data is (not) ready for
+-   `data_ready()` Returns information on why your data is (not) ready for
 analysis.
 
 ### find_ family
 
--   `find_binary()` Returns all binary variables.
+-   `find_binary()` Returns binary variables from input dataset.
 
--   `find_continouus()` Returns all numeric variables.
+-   `find_continouus()` Returns continouus variables from input dataset.
 
 ### dummies_ family
 
