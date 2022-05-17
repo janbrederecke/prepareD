@@ -26,7 +26,7 @@ input.
 
 -   `dummies_make()` Returns the input data with additional dummy variables.
 
-### interna_ family
+### internal_ family
 
 -   `internal_data` Returns a dataframe and annotation file for testing
 purposes.
