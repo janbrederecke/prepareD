@@ -33,6 +33,12 @@ analysis.
 
 -   `comment()` Let's you grow a matrix with comments throughout your analysis.
 
+### time_ family
+
+-   `time_start()` Creates a starting point for a time measurement.
+
+-   `time_stop()` Calculates the time since `time_start()` was initialized.
+
 ### internal_ family
 
 -   `internal_data()` Creates a dataframe and an annotation file for testing
