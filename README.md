@@ -35,8 +35,8 @@ analysis.
 
 ### internal_ family
 
--   `internal_data()` Returns a dataframe and annotation file for testing
-purposes.
+-   `internal_data()` Creates a dataframe and an annotation file for testing
+purposes in the global environment.
 
 ## Installation
 
