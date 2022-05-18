@@ -31,7 +31,7 @@ analysis.
 
 ### comment_ family
 
--   `comment()` Let's you grow a matrix with comments throughout your analyis.
+-   `comment()` Let's you grow a matrix with comments throughout your analysis.
 
 ### internal_ family
 
