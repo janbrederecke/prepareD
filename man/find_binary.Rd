@@ -10,7 +10,8 @@ find_binary(
   .include = FALSE,
   .yes = NULL,
   .no = NULL,
-  .print_yes_no = TRUE
+  .na = NULL,
+  .print = TRUE
 )
 }
 \arguments{
@@ -28,7 +29,10 @@ should be used as 'yes'}
 \item{.no}{Optional character vector that can be used to feed values that
 should be used as 'no'}
 
-\item{.print_yes_no}{If .print_yes_no = TRUE, values detected as yes/no are
+\item{.na}{Optional character vector that can be used to feed values that
+should be used as 'NA'}
+
+\item{.print}{If .print = TRUE, values detected as yes/no are
 printed}
 }
 \value{

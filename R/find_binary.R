@@ -12,7 +12,9 @@
 #' should be used as 'yes'
 #' @param .no Optional character vector that can be used to feed values that
 #' should be used as 'no'
-#' @param .print_yes_no If .print_yes_no = TRUE, values detected as yes/no are
+#' @param .na Optional character vector that can be used to feed values that
+#' should be used as 'NA'
+#' @param .print If .print = TRUE, values detected as yes/no are
 #' printed
 #' 
 #' @return Either a character vector with clearly binary variables or a list
@@ -28,7 +30,8 @@ find_binary <- function(.data
                         , .include = FALSE
                         , .yes = NULL
                         , .no = NULL
-                        , .print_yes_no = TRUE
+                        , .na = NULL
+                        , .print = TRUE
 ){
   
   # Stop if output is not defined correctly
@@ -36,14 +39,14 @@ find_binary <- function(.data
     stop("For '.output' only 'bin' and 'list' allowed.")
   }
   
-  # Check for external yes and no vectors
+  # Check for external yes, no, and NA vectors
   ## Check for yes_vector
   if (is.null(.yes)) {
     .yes <- c("y", "yes", "j", "ja", "jo", "1", "1-ja", "cad")
   }
   
   ## Print which values were counted as yes
-  if (.print_yes_no == TRUE) {
+  if (.print == TRUE) {
     print(paste0("These values were coded as 'yes': ", 
                  paste(.yes, collapse = ", ")))
   }
@@ -54,9 +57,20 @@ find_binary <- function(.data
   }
   
   ## Print which values were counted as no
-  if (.print_yes_no == TRUE) {
+  if (.print == TRUE) {
     print(paste0("These values were coded as 'no': ",
                  paste(.no, collapse = ", ")))
+  }
+  
+  ## Check for NA_vector
+  if (is.null(.na)) {
+    .na <- c("", " ", "unknown", "vielleicht", NA)
+  }
+  
+  ## Print which values were counted as NA
+  if (.print == TRUE) {
+    print(paste0("These values were coded as 'NA': ",
+                 paste(.na, collapse = ", ")))
   }
   
   # Get all numeric variables
@@ -93,7 +107,11 @@ find_binary <- function(.data
         false = dplyr::if_else(
           condition = x %in% .no,
           true = "no",
-          false = x
+          false = dplyr::if_else(
+            condition = x %in% .na,
+            true = NA_character_,
+            false = x
+          )
         )
       )
     })
