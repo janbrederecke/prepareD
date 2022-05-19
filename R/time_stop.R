@@ -9,6 +9,20 @@
 
 time_stop <- function(
 ){
-  # Create the time start object in the global environment
-  time_it_took <<- Sys.time() - time_started
+  if (!exists("time_started")) {
+    stop("You have to initialize a 'time_started' using 'time_start' before
+         'time_stop' can be used.")
+  }
+  
+  # Calculate difference  between time_start and the Sys.time
+  time_difference <- Sys.time() - time_started
+  
+  # Format the time
+  time <- round(as.numeric(unclass(time_difference)), 2)
+  
+  # Get the unit of the time difference (usually minutes)
+  unit <- attr(time_difference, "units")
+  
+  # Create the time_it_took object in the global environment
+  time_it_took <<- paste0(time, " ", unit)
 }
