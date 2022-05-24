@@ -34,7 +34,7 @@ dummies_annotate <- function(.data
     # Check variable type and define dummy_levels accordingly
     if (class(.data[[num]]) == "factor" |
         class(.data[[num]]) == "character") {
-      dummy_levels <- unique(na.omit(.data[[num]]))
+      dummy_levels <- as.character(unique(na.omit(.data[[num]])))
     }
     
     if (class(.data[[num]]) == "numeric") {
