@@ -52,15 +52,15 @@ dummies_annotate <- function(.data
       name <- paste0(.input_variables[i], dummy_levels[j])
       
       # Check variable type and define dummy variable name accordingly
-      if (class(.data[[num]]) == "character") {
+      if (class(.data[[num]]) == "factor" |
+          class(.data[[num]]) == "character") {
         pname <-
           paste0(annotation[[2]][which(annotation[[1]] %in% names(.data)[[num]])],
                  ":",
                  dummy_levels[j])
       }
       
-      if (class(.data[[num]]) == "factor" |
-          class(.data[[num]]) == "numeric") {
+      if (class(.data[[num]]) == "numeric") {
         pname <-
           paste0(annotation[[2]][which(annotation[[1]] %in% names(.data)[[num]])],
                  ":",
