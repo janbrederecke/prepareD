@@ -32,12 +32,12 @@ dummies_annotate <- function(.data
     num <- which(names(.data) %in% .input_variables[i])
     
     # Check variable type and define dummy_levels accordingly
-    if (class(.data[[num]]) == "character") {
+    if (class(.data[[num]]) == "factor" |
+        class(.data[[num]]) == "character") {
       dummy_levels <- unique(na.omit(.data[[num]]))
     }
     
-    if (class(.data[[num]]) == "factor" |
-        class(.data[[num]]) == "numeric") {
+    if (class(.data[[num]]) == "numeric") {
       dummy_levels <- as.numeric(as.character(sort(unique(
         na.omit(.data[[num]])
       ))))
