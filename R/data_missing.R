@@ -1,18 +1,17 @@
 #' @title data_missing
 #'
 #' @description Returns overview on missing values for variables of the input
-#' dataset containing at least one missing value
+#' dataset containing at least one missing value.
 #'
-#' @param .data A data.frame or tibble
-#' @param .caption A character vector used as the caption of the output
+#' @param .data A data.frame or tibble.
+#' @param .caption A character vector used as the caption of the output.
 #' @param .print If .print = TRUE, an HTML output is generated, else a matrix is
-#' returned
+#' returned.
+#' @param .sort_by_na If TRUE, results are sorted by the number of NAs.
 #' 
-#' @return Either a HTML output for use in Markdown files or a matrix
+#' @return Either a HTML output for use in Markdown files or a matrix.
 #' @examples -
 #' @export
-#' @importFrom kableExtra "kable_styling"
-#' @importFrom knitr "kable"
 
 data_missing <- function(.data
                     , .caption = ""
@@ -53,10 +52,11 @@ data_missing <- function(.data
                                          )
                    ))
   
+  # Decide if results are sorted by number of NAs
   if (.sort_by_na == TRUE) {
     
     output <- output[order(as.numeric(output[, "Missing"]), decreasing = TRUE),]
-    
+    rownames(output) <- NULL
   }
   
   # Make an HTML output if wanted

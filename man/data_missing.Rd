@@ -7,19 +7,21 @@
 data_missing(.data, .caption = "", .print = TRUE, .sort_by_na = FALSE)
 }
 \arguments{
-\item{.data}{A data.frame or tibble}
+\item{.data}{A data.frame or tibble.}
 
-\item{.caption}{A character vector used as the caption of the output}
+\item{.caption}{A character vector used as the caption of the output.}
 
 \item{.print}{If .print = TRUE, an HTML output is generated, else a matrix is
-returned}
+returned.}
+
+\item{.sort_by_na}{If TRUE, results are sorted by the number of NAs.}
 }
 \value{
-Either a HTML output for use in Markdown files or a matrix
+Either a HTML output for use in Markdown files or a matrix.
 }
 \description{
 Returns overview on missing values for variables of the input
-dataset containing at least one missing value
+dataset containing at least one missing value.
 }
 \examples{
 -

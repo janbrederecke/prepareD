@@ -7,12 +7,12 @@
 #' "comment". This function grabs the "pname" of the .input_variables to create
 #' the dummy names.
 #'
-#' @param .data A data.frame or tibble
+#' @param .data A data.frame or tibble.
 #' @param .input_variables A character vector containing variables that should be
-#' recoded as dummy variables in the annotation
+#' recoded as dummy variables in the annotation.
 #' 
 #' @return The annotation with additional dummy variables for all
-#' .input_variables
+#' .input_variables.
 #' @examples -
 #' @export
 

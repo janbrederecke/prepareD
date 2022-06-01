@@ -1,14 +1,14 @@
 #' @title dummies_make
 #'
 #' @description Returns the input data with additional dummy variables for
-#' specified variables
+#' specified variables.
 #'
-#' @param .data A data.frame or tibble
+#' @param .data A data.frame or tibble.
 #' @param .input_variables A character vector containing variables that should be
-#' recoded as dummy variables
+#' recoded as dummy variables.
 #' 
 #' @return The a data.frame of the input data with additional dummy variables
-#' for all .input_variables
+#' for all .input_variables.
 #' @examples -
 #' @export
 

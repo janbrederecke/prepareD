@@ -7,19 +7,21 @@
 data_check(.data, .caption = "", .print = TRUE, .sort_by_na = FALSE)
 }
 \arguments{
-\item{.data}{A data.frame or tibble}
+\item{.data}{A data.frame or tibble.}
 
-\item{.caption}{A character vector used as the caption of the output}
+\item{.caption}{A character vector used as the caption of the output.}
 
 \item{.print}{If .print = TRUE, an HTML output is generated, else a matrix is
-returned}
+returned.}
+
+\item{.sort_by_na}{If TRUE, results are sorted by the number of NAs.}
 }
 \value{
-Either a HTML output for use in Markdown files or a matrix
+Either a HTML output for use in Markdown files or a matrix.
 }
 \description{
 Provides a table with info on missingness and variable type for
-the input dataset
+the input dataset.
 }
 \examples{
 -

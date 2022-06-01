@@ -1,29 +1,26 @@
 #' @title find_binary
 #'
 #' @description Returns either a vector with all clearly binary variables or a
-#' list with additional information on variables that might also be binary
+#' list with additional information on variables that might also be binary.
 #'
-#' @param .data A data.frame or tibble
+#' @param .data A data.frame or tibble.
 #' @param .output "bin" returns a vector of binary variables, "list" returns a
-#' list with binary variables, variables coded yes/no and more information
+#' list with binary variables, variables coded yes/no and more information.
 #' @param .include If .include = TRUE, variables recoded as 0/1 within the function
-#' are returned in the list-output - requires .output = "list"
+#' are returned in the list-output - requires .output = "list".
 #' @param .yes Optional character vector that can be used to feed values that
-#' should be used as 'yes'
+#' should be used as 'yes'.
 #' @param .no Optional character vector that can be used to feed values that
-#' should be used as 'no'
+#' should be used as 'no'.
 #' @param .na Optional character vector that can be used to feed values that
-#' should be used as 'NA'
+#' should be used as 'NA'.
 #' @param .print If .print = TRUE, values detected as yes/no are
-#' printed
+#' printed.
 #' 
 #' @return Either a character vector with clearly binary variables or a list
-#' with additional information
+#' with additional information.
 #' @examples -
 #' @export
-#' @importFrom dplyr "%>%" "if_else" "select" "all_of" 
-#' @importFrom labelled "remove_attributes"
-#' @importFrom stringr "str_detect"
 
 find_binary <- function(.data
                         , .output = "bin"
@@ -190,8 +187,10 @@ find_binary <- function(.data
     } else {
       
       # Binarize y/n data
-      d_aux <- d_aux %>% dplyr::select(dplyr::all_of(sort(yn_var))) %>% 
-        as.data.frame()
+      d_aux <- as.data.frame(dplyr::select(daux,
+                                           dplyr::all_of(sort(yn_var))
+                                           )
+                             )
       d_aux <-
         as.data.frame(lapply(d_aux, function(x) {
           dplyr::if_else(

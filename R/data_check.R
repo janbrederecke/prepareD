@@ -1,18 +1,17 @@
 #' @title data_check
 #'
 #' @description Provides a table with info on missingness and variable type for
-#' the input dataset
+#' the input dataset.
 #'
-#' @param .data A data.frame or tibble
-#' @param .caption A character vector used as the caption of the output
+#' @param .data A data.frame or tibble.
+#' @param .caption A character vector used as the caption of the output.
 #' @param .print If .print = TRUE, an HTML output is generated, else a matrix is
-#' returned
+#' returned.
+#' @param .sort_by_na If TRUE, results are sorted by the number of NAs.
 #'
-#' @return Either a HTML output for use in Markdown files or a matrix
+#' @return Either a HTML output for use in Markdown files or a matrix.
 #' @examples -
 #' @export
-#' @importFrom kableExtra "kable_styling"
-#' @importFrom knitr "kable"
 
 data_check <- function(.data
               , .caption = ""
@@ -75,10 +74,11 @@ data_check <- function(.data
                                          , "Maximum")
             ))
   
+  # Decide if results are sorted by number of NAs
   if (.sort_by_na == TRUE) {
 
     output <- output[order(as.numeric(output[, "Missing"]), decreasing = TRUE),]
-
+    rownames(output) <- NULL
   }
   
   # Make knitr output if HTML output is desired

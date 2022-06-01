@@ -7,18 +7,18 @@
 dummies_make(.data, .input_variables)
 }
 \arguments{
-\item{.data}{A data.frame or tibble}
+\item{.data}{A data.frame or tibble.}
 
 \item{.input_variables}{A character vector containing variables that should be
-recoded as dummy variables}
+recoded as dummy variables.}
 }
 \value{
 The a data.frame of the input data with additional dummy variables
-for all .input_variables
+for all .input_variables.
 }
 \description{
 Returns the input data with additional dummy variables for
-specified variables
+specified variables.
 }
 \examples{
 -

@@ -15,33 +15,33 @@ find_binary(
 )
 }
 \arguments{
-\item{.data}{A data.frame or tibble}
+\item{.data}{A data.frame or tibble.}
 
 \item{.output}{"bin" returns a vector of binary variables, "list" returns a
-list with binary variables, variables coded yes/no and more information}
+list with binary variables, variables coded yes/no and more information.}
 
 \item{.include}{If .include = TRUE, variables recoded as 0/1 within the function
-are returned in the list-output - requires .output = "list"}
+are returned in the list-output - requires .output = "list".}
 
 \item{.yes}{Optional character vector that can be used to feed values that
-should be used as 'yes'}
+should be used as 'yes'.}
 
 \item{.no}{Optional character vector that can be used to feed values that
-should be used as 'no'}
+should be used as 'no'.}
 
 \item{.na}{Optional character vector that can be used to feed values that
-should be used as 'NA'}
+should be used as 'NA'.}
 
 \item{.print}{If .print = TRUE, values detected as yes/no are
-printed}
+printed.}
 }
 \value{
 Either a character vector with clearly binary variables or a list
-with additional information
+with additional information.
 }
 \description{
 Returns either a vector with all clearly binary variables or a
-list with additional information on variables that might also be binary
+list with additional information on variables that might also be binary.
 }
 \examples{
 -

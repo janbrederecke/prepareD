@@ -7,14 +7,14 @@
 dummies_annotate(.data, .input_variables)
 }
 \arguments{
-\item{.data}{A data.frame or tibble}
+\item{.data}{A data.frame or tibble.}
 
 \item{.input_variables}{A character vector containing variables that should be
-recoded as dummy variables in the annotation}
+recoded as dummy variables in the annotation.}
 }
 \value{
 The annotation with additional dummy variables for all
-.input_variables
+.input_variables.
 }
 \description{
 Returns the annotation with additional dummy variables for

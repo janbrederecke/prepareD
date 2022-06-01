@@ -1,7 +1,7 @@
 #' @title time_stop
 #'
 #' @description Calculates the time difference since 'time_start' has been
-#' initialized
+#' initialized.
 #'
 #' @return Creates a 'time_it_took' object in the global environment.
 #' @examples -

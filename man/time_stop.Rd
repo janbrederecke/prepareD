@@ -11,7 +11,7 @@ Creates a 'time_it_took' object in the global environment.
 }
 \description{
 Calculates the time difference since 'time_start' has been
-initialized
+initialized.
 }
 \examples{
 -

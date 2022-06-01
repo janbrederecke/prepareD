@@ -1,19 +1,17 @@
 #' @title data_overview
 #'
-#' @description Provides an overview table for the input dataset
+#' @description Provides an overview table for the input dataset.
 #'
-#' @param .data A data.frame or tibble
-#' @param .caption A character vector used as the caption of the output
+#' @param .data A data.frame or tibble.
+#' @param .caption A character vector used as the caption of the output.
 #' @param .print If .print = TRUE, an HTML output is generated, else a matrix is
-#' returned
+#' returned.
 #' @param .percent_missing A number determining the percentage of
-#' missingness used to count variables with high amount of missing values
+#' missingness used to count variables with high amount of missing values.
 #'
-#' @return Either a HTML output for use in Markdown files or a matrix
+#' @return Either a HTML output for use in Markdown files or a matrix.
 #' @examples -
 #' @export
-#' @importFrom kableExtra "kable_styling"
-#' @importFrom knitr "kable"
 
 data_overview <- function(.data
                  , .caption = ""

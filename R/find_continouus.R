@@ -1,14 +1,14 @@
 #' @title find_continouus
 #'
 #' @description Returns a vector with all numeric variables with three or more
-#' unique values
+#' unique values.
 #'
-#' @param .data A data.frame or tibble
+#' @param .data A data.frame or tibble.
 #' @param .bin_var A character vector containing all binary variables
 #' (if known). This results in the output of all numeric variables not in this
 #' string.
 #' 
-#' @return A character vector with the numeric variables
+#' @return A character vector with the numeric variables.
 #' @examples -
 #' @export
 
