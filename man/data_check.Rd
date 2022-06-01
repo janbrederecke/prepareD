@@ -4,7 +4,7 @@
 \alias{data_check}
 \title{data_check}
 \usage{
-data_check(.data, .caption = "", .print = TRUE)
+data_check(.data, .caption = "", .print = TRUE, .sort_by_na = FALSE)
 }
 \arguments{
 \item{.data}{A data.frame or tibble}

@@ -17,7 +17,15 @@
 data_check <- function(.data
               , .caption = ""
               , .print = TRUE
+              , .sort_by_na = FALSE
 ){
+  
+  # Check if data is a tibble and if not, turn it into one (automatically checks for valid names)
+  if (class(.data)[1] == "data.frame") {
+    .data <- tibble::as_tibble(.data)
+  } else if (!class(.data)[1] %in% "tbl_df") {
+    stop("Input must be a data.frame or tibble.")
+  }
   
   # Make all necessary vectors beforehand to improve performance
   var <- var_type <- min <- max <- character(length = (ncol(.data)))
@@ -66,6 +74,12 @@ data_check <- function(.data
                                          , "Minimum"
                                          , "Maximum")
             ))
+  
+  if (.sort_by_na == TRUE) {
+
+    output <- output[order(as.numeric(output[, "Missing"]), decreasing = TRUE),]
+
+  }
   
   # Make knitr output if HTML output is desired
   if (.print == TRUE) {

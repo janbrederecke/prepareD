@@ -4,7 +4,7 @@
 \alias{data_missing}
 \title{data_missing}
 \usage{
-data_missing(.data, .caption = "", .print = TRUE)
+data_missing(.data, .caption = "", .print = TRUE, .sort_by_na = FALSE)
 }
 \arguments{
 \item{.data}{A data.frame or tibble}

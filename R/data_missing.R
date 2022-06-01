@@ -17,6 +17,7 @@
 data_missing <- function(.data
                     , .caption = ""
                     , .print = TRUE
+                    , .sort_by_na = FALSE
 ){
   
   # Make all necessary vectors beforehand
@@ -51,6 +52,12 @@ data_missing <- function(.data
                                          , "Empty but not NA"
                                          )
                    ))
+  
+  if (.sort_by_na == TRUE) {
+    
+    output <- output[order(as.numeric(output[, "Missing"]), decreasing = TRUE),]
+    
+  }
   
   # Make an HTML output if wanted
   if (.print == TRUE) {
