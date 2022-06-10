@@ -32,14 +32,14 @@ dummies_annotate <- function(.data
     num <- which(names(.data) %in% .input_variables[i])
     
     # Check variable type and define dummy_levels accordingly
-    if (class(.data[[num]]) == "factor" |
-        class(.data[[num]]) == "character") {
-      dummy_levels <- as.character(unique(na.omit(.data[[num]])))
+    if (is.factor(.data[[num]]) == TRUE |
+        is.character(.data[[num]]) == TRUE) {
+      dummy_levels <- as.character(unique(stats::na.omit(.data[[num]])))
     }
     
-    if (class(.data[[num]]) == "numeric") {
+    if (is.numeric(.data[[num]]) == TRUE) {
       dummy_levels <- as.numeric(as.character(sort(unique(
-        na.omit(.data[[num]])
+        stats::na.omit(.data[[num]])
       ))))
     }
     
@@ -52,15 +52,15 @@ dummies_annotate <- function(.data
       name <- paste0(.input_variables[i], dummy_levels[j])
       
       # Check variable type and define dummy variable name accordingly
-      if (class(.data[[num]]) == "factor" |
-          class(.data[[num]]) == "character") {
+      if (is.factor(.data[[num]]) == TRUE |
+          is.character(.data[[num]]) == TRUE) {
         pname <-
           paste0(annotation[[2]][which(annotation[[1]] %in% names(.data)[[num]])],
                  ":",
                  dummy_levels[j])
       }
       
-      if (class(.data[[num]]) == "numeric") {
+      if (is.numeric(.data[[num]]) == TRUE) {
         pname <-
           paste0(annotation[[2]][which(annotation[[1]] %in% names(.data)[[num]])],
                  ":",

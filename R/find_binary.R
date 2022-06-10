@@ -120,7 +120,7 @@ find_binary <- function(.data
     # Find "clear" yes/no binary variables
     ## Get number of unique values in character variables
     yn_unique_val <- unlist(lapply(d_aux[, character_variables], function(x)
-      length(na.omit(unique(
+      length(stats::na.omit(unique(
         x
       )))))
     
@@ -129,9 +129,9 @@ find_binary <- function(.data
     suspected_ynvar_2 <- names(yn_unique_val[yn_unique_val == 2])
     
     ## Get the exact unique values of character variables with 1 unique
-    yn1_test <- lapply(dplyr::select(d_aux, all_of(suspected_ynvar_1)), function(x)
+    yn1_test <- lapply(dplyr::select(d_aux, dplyr::all_of(suspected_ynvar_1)), function(x)
     {
-      labelled::remove_attributes(na.omit(unique(x)), c("na.action"))
+      labelled::remove_attributes(stats::na.omit(unique(x)), c("na.action"))
     })
     
     ## Classify as y/n variable or not
@@ -140,7 +140,7 @@ find_binary <- function(.data
     ## Get the exact unique values of character variables with 2 uniques
     yn2_test <- lapply(dplyr::select(d_aux, dplyr::all_of(suspected_ynvar_2)), function(x)
     {
-      labelled::remove_attributes(na.omit(sort(unique(x))), c("na.action"))
+      labelled::remove_attributes(stats::na.omit(sort(unique(x))), c("na.action"))
     })
     
     ## Add to y/n variable or not
@@ -154,7 +154,7 @@ find_binary <- function(.data
     # Count unique values but NA in variables to be tested
     to_test <- setdiff(to_test, yn_var)
     to_test <- unlist(lapply(d_aux[, to_test], function(x)
-      length(na.omit(unique(
+      length(stats::na.omit(unique(
         x
       )))))
     
@@ -164,7 +164,7 @@ find_binary <- function(.data
     # Add unique values for all variables of interesst
     unique_values <- lapply(.data[, sort(c(bin_var, yn_var, suspected_var))],
                             function(x) {
-                              labelled::remove_attributes(sort(na.omit(unique(x))),
+                              labelled::remove_attributes(sort(stats::na.omit(unique(x))),
                                                           c("na.action"))
                             })
     
@@ -187,7 +187,7 @@ find_binary <- function(.data
     } else {
       
       # Binarize y/n data
-      d_aux <- as.data.frame(dplyr::select(daux,
+      d_aux <- as.data.frame(dplyr::select(d_aux,
                                            dplyr::all_of(sort(yn_var))
                                            )
                              )
@@ -216,7 +216,7 @@ find_binary <- function(.data
     
     # Count unique values but NA in variables to be tested
     to_test <- unlist(lapply(d_aux, function(x)
-      length(na.omit(unique(
+      length(stats::na.omit(unique(
         x
       )))))
     

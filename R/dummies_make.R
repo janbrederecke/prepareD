@@ -28,15 +28,15 @@ dummies_make <- function(.data
     dummy_name <- which(names(.data) %in% .input_variables[i])
     
     # Check variable type and define dummy_levels accordingly
-    if (class(.data[[dummy_name]]) == "factor" |
-        class(.data[[dummy_name]]) == "character") {
-      dummy_levels <- unique(na.omit(.data[[dummy_name]]))
+    if (is.factor(.data[[dummy_name]]) == TRUE |
+        is.character(.data[[dummy_name]]) == TRUE) {
+      dummy_levels <- unique(stats::na.omit(.data[[dummy_name]]))
     }
     
-    if (class(.data[[dummy_name]]) == "numeric" |
-        class(.data[[dummy_name]]) == "integer") {
+    if (is.numeric(.data[[dummy_name]]) == TRUE |
+        is.numeric(.data[[dummy_name]]) == TRUE) {
       dummy_levels <- as.numeric(as.character(sort(unique(
-        na.omit(.data[[dummy_name]])
+        stats::na.omit(.data[[dummy_name]])
       ))))
     }
     

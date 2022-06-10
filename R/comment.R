@@ -12,7 +12,7 @@
 comment <- function(.comment = ""
 ){
   # Check if input is correct (a character vector)
-  if (class(.comment) != "character") {
+  if (is.character(.comment) != TRUE) {
     # Stop if input is of wrong type
     stop("Your comment has to be a character vector!")
   }

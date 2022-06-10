@@ -23,7 +23,7 @@ find_continouus <- function(.data
   if (!is.null(.bin_var)) {
     
     # Check if .bin_var is not a character vector 
-    if (class(.bin_var) != "character") {
+    if (is.character(.bin_var) != TRUE) {
       stop(".bin_var needs to be a character vector!")
     }
     
@@ -38,7 +38,7 @@ find_continouus <- function(.data
   
   # Count unique values but NA in variables to be tested
   to_test <- unlist(lapply(.data[, numeric_variables], function(x)
-    length(na.omit(unique(
+    length(stats::na.omit(unique(
       x
     )))))
   

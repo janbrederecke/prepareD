@@ -20,9 +20,9 @@ data_check <- function(.data
 ){
   
   # Check if data is a tibble and if not, turn it into one (automatically checks for valid names)
-  if (class(.data)[1] == "data.frame") {
+  if (is.data.frame(.data) == TRUE && tibble::is_tibble(.data) == FALSE) {
     .data <- tibble::as_tibble(.data)
-  } else if (!class(.data)[1] %in% "tbl_df") {
+  } else if (is.data.frame(.data) == FALSE) {
     stop("Input must be a data.frame or tibble.")
   }
   
@@ -77,7 +77,7 @@ data_check <- function(.data
   # Decide if results are sorted by number of NAs
   if (.sort_by_na == TRUE) {
 
-    output <- output[order(as.numeric(output[, "Missing"]), decreasing = TRUE),]
+    output <- output[order(as.numeric(output[, "Missing"]), decreasing = TRUE), ]
     rownames(output) <- NULL
   }
   
