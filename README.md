@@ -4,6 +4,12 @@ R package with useful functions for data preparation and documentation.
 
 ## Overview
 
+### project_ family
+**Functions to quickly initialize a standard project structure** 
+
+-   `project_structure()` Initializes folder structure and R files from
+templates in the current working directory.
+
 ### data_ family
 **Functions to quickly return information on the input data** 
 
