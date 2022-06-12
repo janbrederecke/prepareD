@@ -1,0 +1,79 @@
+---
+title: "Reading and processing data for YOURPROJECTNAME"
+date: "`r Sys.Date()`"
+author: "YOURNAME"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Step 0: Loading packages and annotation file
+```{r}
+# Recording time 
+prepareD::time_start()
+
+# Loading R packages 
+library(here)
+library(prepareD)
+
+# Reading annotation file 
+documents_folder <- paste0(here(),"/documents/annotation/")
+annotation <- read.csv(paste0(documents_folder, "/annotation.csv"),
+                              stringsAsFactors = FALSE)
+annotation[[1]] <- tolower(annotation[[1]]) 
+rownames(annotation) <- annotation[[1]]
+
+# Loading additional functions not available in packages
+source(here("R/01-data-processing/00_functions.R"))
+```
+
+# Step 1: Loading data
+```{r}
+# You might want to use this to speed up the initial loading of data
+data_folder <- paste0(here(),"/data/raw/")
+data <-
+  data.table::fread(
+    paste0(data_folder, "YOURDATA.csv"),
+    stringsAsFactors = FALSE,
+    check.names = TRUE,
+    data.table = FALSE
+  )
+```
+
+
+
+
+# Saving processed data
+```{r}
+# System info
+system_info <- Sys.info()  
+
+# Saving results
+to_save <- c("data"
+             , "annotation")
+file <- paste0(here(), "/data/cleaned/read_data.RData")
+to_save <- c(to_save
+             , system_info)
+save(list = to_save,
+     file = file)
+```
+
+# R session information
+This file was created on `r date()` with `r R.Version()$version.string`. 
+```{r}
+time_stop()
+```
+
+It took `r time_it_took` for all analyses to run.
+```{r}
+sessionInfo()
+rm(list = ls())
+```
