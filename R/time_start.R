@@ -9,5 +9,6 @@
 time_start <- function(
 ){
   # Create the time start object in the global environment
+  time_started <- NULL
   time_started <<- Sys.time()
 }

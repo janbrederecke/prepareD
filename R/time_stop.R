@@ -24,5 +24,10 @@ time_stop <- function(
   unit <- attr(time_difference, "units")
   
   # Create the time_it_took object in the global environment
+  time_it_took <- NULL
   time_it_took <<- paste0(time, " ", unit)
 }
+
+# We have to introduce a global variable for time_started as we cannot declare
+# it inside the function
+if (getRversion() >= "2.15.1")  utils::globalVariables(c("time_started"))

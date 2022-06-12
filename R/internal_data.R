@@ -34,9 +34,11 @@ internal_data <- function(size = 1
   rm(i)
   
   # Output the dataframe to the environment
+  d <- NULL
   d <<- d
   
   # Make an annotation file
+  annotation <- NULL
   annotation <<-
     data.frame(
       "name" = c("bn1", "bn2"),
