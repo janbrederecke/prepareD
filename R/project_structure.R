@@ -1,4 +1,4 @@
-project_template_init <- function(path = "") {
+project_structure <- function(path = "") {
     if (path == "") {
         path <- getwd()
     }
