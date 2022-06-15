@@ -8,7 +8,7 @@
 #' @param .print If .print = TRUE, an HTML output is generated, else a matrix is
 #' returned.
 #' @param .sort_by_na If TRUE, results are sorted by the number of NAs.
-#' 
+#'
 #' @return Either a HTML output for use in Markdown files or a matrix.
 #' @examples -
 #' @export
@@ -18,15 +18,13 @@ data_missing <- function(.data
                     , .print = TRUE
                     , .sort_by_na = FALSE
 ){
-  
+
   # Make all necessary vectors beforehand
   var <- character()
   missings <- missings_prop <- empty_but_not_NA <- numeric()
-  
+
   for (i in 1:length(names(.data))) {
-    
     if (sum(is.na(.data[[i]])) > 0) {
-      
       var[length(var) + 1] <- names(.data)[i]
       missings[length(missings) + 1] <- sum(is.na(.data[[i]]))
       missings_prop[length(missings_prop) + 1] <-
@@ -35,7 +33,7 @@ data_missing <- function(.data
         sum(.data[[i]] %in% c("", " "), na.rm = TRUE)
     }
   }
-  
+
   # Make output matrix
   output <- matrix(c(var
                      , missings
@@ -50,19 +48,19 @@ data_missing <- function(.data
                                          , "% missing"
                                          , "Empty but not NA"
                                          )
-                   ))
-  
+                                    )
+                  )
+
   # Decide if results are sorted by number of NAs
   if (.sort_by_na == TRUE) {
-    
-    output <- output[order(as.numeric(output[, "Missing"]), decreasing = TRUE),]
+    output <- output[order(as.numeric(output[, "Missing"]),
+                           decreasing = TRUE), ]
     rownames(output) <- NULL
   }
-  
+
   # Make an HTML output if wanted
   if (.print == TRUE) {
-    
-    ## Make pretty knitr output
+    # Make pretty knitr output
     options(knitr.kable.NA = '')
     print(kableExtra::kable_styling(
       kable_input = knitr::kable(
@@ -75,8 +73,8 @@ data_missing <- function(.data
       full_width = TRUE
       , bootstrap_options = c("striped", "hover", "condensed", "responsive")
     ))
-    
-  # Standard output if wanted  
+
+  # Standard output if wanted
   } else {
     output
   }

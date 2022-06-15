@@ -9,8 +9,8 @@ dummies_make(.data, .input_variables)
 \arguments{
 \item{.data}{A data.frame or tibble.}
 
-\item{.input_variables}{A character vector containing variables that should be
-recoded as dummy variables.}
+\item{.input_variables}{A character vector containing variables that should
+be recoded as dummy variables.}
 }
 \value{
 The a data.frame of the input data with additional dummy variables

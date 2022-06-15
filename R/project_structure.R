@@ -11,6 +11,7 @@
 
 project_structure <- function(.path = ""
 ){
+
   # Check the path
   if (.path == "") {
     .path <- getwd()

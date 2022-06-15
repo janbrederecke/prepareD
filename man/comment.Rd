@@ -7,14 +7,14 @@
 comment(.comment = "")
 }
 \arguments{
-\item{.comment}{A character vector}
+\item{.comment}{A character vector.}
 }
 \value{
 A matrix containing your comments is created in the global
-environment
+environment.
 }
 \description{
-Let's you comment your analysis with one simple function
+Let's you comment your analysis with one simple function.
 }
 \examples{
 -

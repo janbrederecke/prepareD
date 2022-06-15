@@ -20,8 +20,8 @@ find_binary(
 \item{.output}{"bin" returns a vector of binary variables, "list" returns a
 list with binary variables, variables coded yes/no and more information.}
 
-\item{.include}{If .include = TRUE, variables recoded as 0/1 within the function
-are returned in the list-output - requires .output = "list".}
+\item{.include}{If .include = TRUE, variables recoded as 0/1 within the
+function are returned in the list-output - requires .output = "list".}
 
 \item{.yes}{Optional character vector that can be used to feed values that
 should be used as 'yes'.}
