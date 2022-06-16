@@ -4,10 +4,14 @@
 \alias{project_structure}
 \title{project_structure}
 \usage{
-project_structure(.path = "")
+project_structure(.path = "", .template = "basic")
 }
 \arguments{
 \item{.path}{A character vector containing the path to the project.}
+
+\item{.template}{Defaults to "basic". Character vector that can be used to
+choose user-defined templates that have been saved to
+"system.file/templates".}
 }
 \value{
 A character vector with the numeric variables.
