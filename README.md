@@ -21,6 +21,12 @@ for the input dataset.
 -   `data_missing()` Returns overview on missing values for variables of the
 input.
 
+### annotation_ family
+**Functions to quickly return basic annotation for the input data**
+
+-   `annotation_create()` Returns a basic annotation for the input dataset that
+can be used to build an annotation for a new project or database.
+
 ### find_ family
 **Functions to find specific groups of variables in the input data**
 
