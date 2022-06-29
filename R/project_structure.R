@@ -6,6 +6,9 @@
 #' @param .template Defaults to "basic". Character vector that can be used to
 #' choose user-defined templates that have been saved to
 #' "system.file/templates".
+#' @param .data_folder Logical. If TRUE, a folder of name 'data' with
+#' subdirectories 'raw' and 'clean' is created in the root folder of the current
+#' project.
 #'
 #' @return A character vector with the numeric variables.
 #' @examples -
@@ -13,6 +16,7 @@
 
 project_structure <- function(.path = ""
                               , .template = "basic"
+                              , .data_folder = TRUE
 ){
 
   # Check the path
@@ -27,8 +31,10 @@ project_structure <- function(.path = ""
   file.copy(from = all_files, to = .path, overwrite = TRUE,
             recursive = TRUE)
 
-  # Create the empty folders that cannot be included in the template
+  # Create empty data folders that cannot be included in the template
+  if (.data_folder == TRUE) {
   dir.create(paste0(.path, "/data"))
   dir.create(paste0(.path, "/data/raw"))
   dir.create(paste0(.path, "/data/clean"))
+  }
 }

@@ -4,7 +4,7 @@
 \alias{project_structure}
 \title{project_structure}
 \usage{
-project_structure(.path = "", .template = "basic")
+project_structure(.path = "", .template = "basic", .data_folder = TRUE)
 }
 \arguments{
 \item{.path}{A character vector containing the path to the project.}
@@ -12,6 +12,10 @@ project_structure(.path = "", .template = "basic")
 \item{.template}{Defaults to "basic". Character vector that can be used to
 choose user-defined templates that have been saved to
 "system.file/templates".}
+
+\item{.data_folder}{Logical. If TRUE, a folder of name 'data' with
+subdirectories 'raw' and 'clean' is created in the root folder of the current
+project.}
 }
 \value{
 A character vector with the numeric variables.
