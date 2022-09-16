@@ -61,14 +61,22 @@ data_clean <- function(.data
     } else {
         print(paste0("No columns removed."))
     }
-    print(paste0("Rows had to have ", percent_of_cols, " (", .column_percent, "%) missing values to be removed."))
+
+    if (.columns == TRUE) {
+    print(paste0("Rows had to have ", percent_of_cols,
+    " (", .column_percent, "%) missing values to be removed."))
+    }
 
     if (sum(empty_rows) > 0) {
         print(paste0("Number of removed rows: ", sum(empty_rows)))
     } else {
         print(paste0("No rows removed."))
     }
-    print(paste0("Rows had to have ", percent_of_rows, " (", .row_percent, "%) missing values to be removed."))
+
+    if (.rows == TRUE) {
+    print(paste0("Rows had to have ", percent_of_rows,
+    " (", .row_percent, "%) missing values to be removed."))
+    }
   }
   # Return output
   if (.return_tbl_df == TRUE) {
