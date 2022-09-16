@@ -63,7 +63,7 @@ data_clean <- function(.data
     }
 
     if (.columns == TRUE) {
-    print(paste0("Rows had to have ", percent_of_cols,
+    print(paste0("Columns had to have ", percent_of_cols,
     " (", .column_percent, "%) missing values to be removed."))
     }
 
