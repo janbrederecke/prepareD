@@ -41,8 +41,8 @@ data_clean <- function(.data
   rows <- nrow(.data)
 
   # Calculate percent of cols and rows to prevent recalculating in next step
-  percent_of_rows <- round((.row_percent / 100) * rows, 0)
-  percent_of_cols <- round((.column_percent / 100) * cols, 0)
+  percent_of_rows <- round((.row_percent / 100) * cols, 0)
+  percent_of_cols <- round((.column_percent / 100) * rows, 0)
 
   # Find out which rows and columns have too many missings
   empty_rows <- apply(.data, 1, function(x) sum(is.na(x)) >= percent_of_rows)
@@ -61,12 +61,14 @@ data_clean <- function(.data
     } else {
         print(paste0("No columns removed."))
     }
+    print(paste0("Rows had to have ", percent_of_cols, " (", .column_percent, "%) missing values to be removed."))
 
     if (sum(empty_rows) > 0) {
         print(paste0("Number of removed rows: ", sum(empty_rows)))
     } else {
         print(paste0("No rows removed."))
     }
+    print(paste0("Rows had to have ", percent_of_rows, " (", .row_percent, "%) missing values to be removed."))
   }
   # Return output
   if (.return_tbl_df == TRUE) {
