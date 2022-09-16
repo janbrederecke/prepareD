@@ -3,6 +3,7 @@
 export(annotation_create)
 export(comment)
 export(data_check)
+export(data_clean)
 export(data_missing)
 export(data_overview)
 export(dummies_annotate)

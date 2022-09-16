@@ -37,7 +37,7 @@ data_overview <- function(.data
   rows_percent_missing <-
     sum(apply(.data, 1, function(x) sum(is.na(x)) >= percent_of_cols) + 0)
 
-  # Necessary for use with pipe in fron of the function
+  # Necessary for use with pipe in front of the function
   if (as.character(deparse(substitute(.data))) == ".") {
     input_name <- c("Input dataset")
   } else {

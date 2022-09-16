@@ -21,6 +21,9 @@ for the input dataset.
 -   `data_missing()` Returns overview on missing values for variables of the
 input.
 
+-   `data_clean()` Returns input dataframe without empty rows and columns.
+
+
 ### annotation_ family
 **Functions to quickly return basic annotation for the input data**
 

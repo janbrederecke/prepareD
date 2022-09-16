@@ -31,6 +31,13 @@ data_missing <- function(.data
         round(sum(is.na(.data[[i]])) / nrow(.data) * 100, 2)
       empty_but_not_NA[length(empty_but_not_NA) + 1] <-
         sum(.data[[i]] %in% c("", " "), na.rm = TRUE)
+    } else {
+      var[length(var) + 1] <- names(.data)[i]
+      missings[length(missings) + 1] <- 0
+      missings_prop[length(missings_prop) + 1] <- 0
+      empty_but_not_NA[length(empty_but_not_NA) + 1] <-
+        sum(.data[[i]] %in% c("", " "), na.rm = TRUE)
+
     }
   }
 
