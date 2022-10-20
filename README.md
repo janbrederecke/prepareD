@@ -1,4 +1,4 @@
-# prepareD <img src="man/figures/logo_test.jpeg" width="200" height="200" align="right" />
+# prepareD <img src="man/figures/prepareD.jpeg" width="200" height="200" align="right" />
 
 R package with useful functions for data preparation and documentation.
 
